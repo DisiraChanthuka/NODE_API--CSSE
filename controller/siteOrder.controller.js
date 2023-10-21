@@ -1,7 +1,7 @@
 const SiteOrderServices = require('../services/siteOrder.services');
 
 
-
+//creating orders
 exports.createSiteOrder = async(req , res , next) =>{
     try {
         const {userId , Company , Warehouse , Reference ,Required_Date } = req.body;
@@ -14,35 +14,41 @@ exports.createSiteOrder = async(req , res , next) =>{
                 Required_Date
                 );
 
-        res.json({status: true , success:order});
+        res.json({status: 200 , success:order});
+        console.log("----NEW ORDER PLACED ✔----",order);
     } catch (error) {
         next(error);
     }
 }
 
+//fetch orders
 exports.getSiteOrder = async(req , res , next) =>{
     try {
         const {userId} = req.body;
         let order = await SiteOrderServices.getSiteOrder(userId);
 
-        res.json({status: true , success:order});
+        res.json({status: 200 , success:order});
+        console.log("----ORDER FETCHED ✔----");
     } catch (error) {
         next(error);
     }
 }
 
+//delete orders
 exports.deletSiteOrder = async(req , res , next) =>{
     try {
         const {id} = req.body;
 
         let deleted = await SiteOrderServices.deletSiteOrder(id);
 
-        res.json({status: true , success:deleted});
+        res.json({status: 200 , success:deleted});
+        console.log("----ORDER DELETED ✔----");
     } catch (error) {
         next(error);
     }
 }
 
+//update orders
 exports.updateSiteOrder = async (req, res, next) => {
     try {
       const { id, Company, Warehouse , Reference , Required_Date} = req.body;
@@ -54,7 +60,8 @@ exports.updateSiteOrder = async (req, res, next) => {
         Reference,
         Required_Date
            );
-      res.json({ status: true, success: updatedSiteOrder });
+      res.json({ status: 200, success: updatedSiteOrder });
+      console.log("----ORDER UPDATED ✔----" ,updatedSiteOrder);
     } catch (error) {
       next(error);
     }

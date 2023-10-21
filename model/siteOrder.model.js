@@ -16,6 +16,7 @@ const siteOrderSchema = new Schema({
     Warehouse:{
         type: String,
         required : true 
+        
     },
     Reference:{
         type: String,
