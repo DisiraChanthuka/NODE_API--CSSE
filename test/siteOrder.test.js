@@ -8,14 +8,14 @@ chai.use(chaiHttp);
 describe('Site Order API Tests', () => {
   let createdOrderId;
 
-  // Setup: Create a new site order before running the tests
+  //  a new site order before running the tests
   before((done) => {
     const newOrder = {
       userId: '652cdf2794a020d8edbed481',
       Company: 'Test Company 01',
       Warehouse: 'Test Warehouse',
       Reference: 'Test Reference',
-      Required_Date: '2023-10-20', // Change to a valid date
+      Required_Date: '2023-10-20', 
     };
 
     chai
@@ -28,7 +28,7 @@ describe('Site Order API Tests', () => {
       });
   });
 
-  // Cleanup: Delete the created site order after the tests
+  //  Delete the created site order after the tests
   after((done) => {
     chai
       .request(app)
@@ -41,13 +41,13 @@ describe('Site Order API Tests', () => {
 
   // Test creating a new site order
   it('should create a new site order', (done) => {
-    // Your test code here
+    
     const newOrder = {
       userId: '652cdf2794a020d8edbed481',
       Company: 'Test Company 02',
       Warehouse: 'Test Warehouse',
       Reference: 'Test Reference',
-      Required_Date: '2023-10-20', // Change to a valid date
+      Required_Date: '2023-10-20', 
     };
 
     chai
@@ -66,7 +66,7 @@ describe('Site Order API Tests', () => {
     chai
       .request(app)
       .post('/getSiteOrderList')
-      .send({ userId: '652cdf2794a020d8edbed481' }) // Provide a valid user ID
+      .send({ userId: '652cdf2794a020d8edbed481' }) 
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('object');
@@ -78,7 +78,7 @@ describe('Site Order API Tests', () => {
 
   // Test updating a site order
   it('should update a site order', (done) => {
-    // Your test code here
+    
     const updatedOrder = {
       id: createdOrderId,
       Company: 'Updated Company Name',
@@ -98,7 +98,7 @@ describe('Site Order API Tests', () => {
 
   // Test deleting a site order
   it('should delete a site order', (done) => {
-    // Your test code here
+    
     chai
       .request(app)
       .post('/deletSiteOrder')
