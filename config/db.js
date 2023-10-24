@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const connection = mongoose.createConnection('mongodb+srv://disira:1234@csse.oosfbth.mongodb.net/test?retryWrites=true&w=majority')
+const connection = mongoose.createConnection('your_mongo_url')
 .on('open' , ()=>{
    console.log("Connected to DB 💻"); 
 }).on('error' , () => {
